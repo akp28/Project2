@@ -1,3 +1,82 @@
-.list-group-item {
-  line-height: 2.5;
+#home {
+  height: 100vh;
+  background: url(../assets/California_Condor.png) no-repeat center center fixed;
+  -webkit-background-size: cover; 
+  -moz-background-size: cover;    
+  -o-background-size: cover;      
+  background-size: cover; 
+  position: relative; 
+  z-index: 1; 
+}
+
+
+#front-font {
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  height: auto;
+  margin-left: 12vw;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#hourglass {
+  width: 250px;
+  height: 221px;
+}
+
+#title {
+  font-size: 3.5em;
+  font-weight: 900;
+  font-family: 'PT Serif', serif;
+  padding-bottom: 20px;
+  color: whitesmoke;
+  text-shadow: 2px 1px rgb(8, 8, 8);
+}
+
+#title-text {
+  font-size: 1.4em;
+  font-family: 'Slabo 27px', serif;
+  padding-bottom: 45px;
+  color: #0e0e0d;
+}
+
+#sign-in {
+  font-size: 1.5em;
+  background: #31312f;
+  padding: 15px;
+  color: whitesmoke;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Slabo 27px', serif;
+  z-index: 1000;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#sign-in:hover {
+  background: black;
+}
+
+#error-container {
+  width: 100%;
+  max-width: 820px;
+  margin: auto;
+  height: auto;
+  text-align: center;
+  margin-top: 100px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#four {
+  font-family: 'PT Serif', serif;
+  font-weight: 600;
+  font-size: 1.7em;
+}
+
+#go-back {
+  font-size: 1.6em;
 }

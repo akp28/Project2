@@ -1,6 +1,25 @@
-<div class="container">
+<div id="home">
+  <center>
+    <form role="search" method="get" id="searchform" class="searchform" action="/">
+      <div>
+      <input type="text" placeholder="Search an animal" value="" name="s" id="s">
+      <input type="submit" id="sign-in" value="Search">
+      </div>
+    </form>
+  </center>
+
   <div class="row">
-    <div class="col-8 offset-2">
+
+    <div class="col-md-3">
+      <center>
+      <h5 id="title">User Profile</h5>
+      <p>
+        <h3 id="title-text">Favorite Species:</h3>
+      </p>
+      </center>
+    </div>
+
+    <div class ="col-md-9">
       <div class="card mt-4">
         <div class="card-body">
           <h5 class="card-title">Example</h5>
@@ -15,5 +34,6 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>

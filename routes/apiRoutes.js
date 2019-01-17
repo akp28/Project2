@@ -1,4 +1,5 @@
 var db = require("../models");
+let axios = require('axios');
 
 module.exports = function(app) {
   // Get all examples
@@ -22,3 +23,12 @@ module.exports = function(app) {
     });
   });
 };
+
+axios.get('http://apiv3.iucnredlist.org/api/v3/speciescount?token=' + process.env.IUCN_REDLIST_KEY).then(
+  function(response) {
+    console.log(response.data);
+  }
+)
+.catch( function(err){
+  console.log(err)
+})

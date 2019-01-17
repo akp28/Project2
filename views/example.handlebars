@@ -25,13 +25,19 @@
         <div class="card-body">
           <h5 class="card-title">Example</h5>
           <p>
+            <strong>Email</strong>: {{ user.userinfo.preferred_username }}
+          </p>
+          <p>
+            <strong>Name</strong>: {{user.userinfo.given_name }}
+          </p>
+          <p>
             <strong>ID</strong>: {{example.id}}</p>
           <p>
           <p>
             <strong>Text</strong>: {{example.text}}</p>
           <p>
             <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
+            <a href="/">← Back To Home</a> <a href="/logout"> Logout</a>
         </div>
       </div>
     </div>

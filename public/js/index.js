@@ -1,27 +1,8 @@
 // Get references to page elements
-let keys = require('./keys.js');
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
-
-
-function speciesSearch() {
-
-  var queryURL = "https://http://apiv3.iucnredlist.org/api/v3/species/narrative/:name?token=" + keys.parsed.IUCN_REDLIST_KEY; 
-
-  return $.ajax({
-  url: queryURL,
-  dataType: "html",
-  method: "GET"
-  }).then(function (response) {
-    // store data in results
-    var results = response.data;
-    console.log(results);
-  });
-};
-speciesSearch(results);
-
 
 // The API object contains methods for each kind of request we'll make
 var API = {

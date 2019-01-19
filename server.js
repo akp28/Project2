@@ -34,7 +34,7 @@ app.use(auth.oidc.router)
 
 app.get('/', (req, res) => {
   if (req.userContext) {
-    res.render('example', { user: req.userContext })
+    res.render('animal', { user: req.userContext })
   } else {
   //   res.send('Please <a href="/login">login</a>');
     res.render('index')

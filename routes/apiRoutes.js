@@ -2,24 +2,24 @@ var db = require("../models");
 let axios = require('axios');
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all Animals
+  app.get("/api/animals", function(req, res) {
+    db.Animal.findAll({}).then(function(dbAnimal) {
+      res.json(dbAnimal);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new Animal
+  app.post("/api/animals", function(req, res) {
+    db.Animal.create(req.body).then(function(dbAnimal) {
+      res.json(dbAnimal);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // Delete an Animal by id
+  app.delete("/api/animals/:id", function(req, res) {
+    db.Animal.destroy({ where: { id: req.params.id } }).then(function(dbAnimal) {
+      res.json(dbAnimal);
     });
   });
 };

@@ -6,10 +6,14 @@ USE user_db;
 CREATE TABLE animals
 (
 	id int NOT NULL AUTO_INCREMENT,
-    animal_name VARCHAR(150) NOT NULL,
+    animal_name_common VARCHAR(100) NOT NULL,
     favorited BOOLEAN,
-    threat_level VARCHAR(30) NOT NULL,
-    pop_trend VARCHAR(30),
+    animal_name_scientific VARCHAR(170) NOT NULL,
+    threat VARCHAR(30) NOT NULL,
+    pop INT(10),
+    max_weight INT(10),
+    habitat VARCHAR(200),
+    info TEXT,
     user_post TEXT,
     PRIMARY KEY (id)
 );
@@ -31,3 +35,7 @@ CREATE TABLE merged
     FOREIGN KEY (userid) REFERENCES user(id),
     PRIMARY KEY (merge_id)
 );
+
+SELECT * FROM animals;
+SELECT * FROM user;
+SELECT * FROM merged;

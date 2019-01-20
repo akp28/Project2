@@ -45,8 +45,13 @@ module.exports = function (app) {
     // res.send('Top Secret');
   })
 
+  app.get("/homepage", (req, res) => {
+    res.render("homepage");
+  })
+
   // Render 404 page for any unmatched routes
   app.get('*', function (req, res) {
     res.render('index')
   })
 }
+

@@ -45,8 +45,8 @@ module.exports = function (app) {
     // res.send('Top Secret');
   })
 
-  app.get("/homepage", (req, res) => {
-    res.render("homepage");
+  app.get("/homepage", auth.oidc.ensureAuthenticated(), (req, res) => {
+    res.render("homepage",{user: req.userContext})
   })
 
   // Render 404 page for any unmatched routes

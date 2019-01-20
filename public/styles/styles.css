@@ -1,3 +1,7 @@
+body{
+  background:rgb(230, 218, 218);
+}
+
 #home {
   height: 100vh;
   background: url(../assets/California_Condor.png) no-repeat center center fixed;
@@ -9,6 +13,9 @@
   z-index: 1; 
 }
 
+h1 {
+  font-family: 'PT Serif', serif;
+}
 
 #front-font {
   position: absolute;
@@ -81,15 +88,165 @@
   font-size: 1.6em;
 }
 
-/* Example page */
+/* animal.handlebars page */
 
-#search-input {
-  font-size: 40px;
-  border: none;
-  outline: none;
+#wings {
+  height: 100vh;
+  background: url(../assets/wingspread.png) no-repeat center center fixed;
+  -webkit-background-size: cover; 
+  -moz-background-size: cover;    
+  -o-background-size: cover;      
+  background-size: cover; 
+  position: relative; 
+}
+
+#navbar {
+  background: #c53d44;
+  -webkit-filter: drop-shadow(2px 2px 2px #222);
+  filter: drop-shadow(2px 2px 2px #222);
+}
+
+.searchbar{
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: #353b48;
+  border-radius: 30px;
+  padding: 10px;
+  }
+
+.search_input{
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color:transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_input{
+  padding: 0 10px;
+  width: 450px;
+  caret-color:red;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon{
+  background: white;
+  color: #e74c3c;
+}
+
+.search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:white;
+}
+
+#user-font {
+  font-family: 'Slabo 27px', serif;
+  font-size: 1.6em;
+}
+
+#top-bar {
   margin: auto;
-  color: black;
+}
+
+#hourglass-small {
+  -webkit-filter: drop-shadow(2px 2px 2px #222);
+  filter: drop-shadow(2px 2px 2px #222);
+  height: 60px;
+  width: 60px;
+  margin-left: 50px;
+  margin-right: 20px;
+}
+
+.navbar-brand {
   font-family: 'PT Serif', serif;
-  width: auto;
-  background: transparent;
+  color: white;
+  padding: 10px;
+  font-size: 1.7em;
+  text-shadow: 2px 2px #31312f;
+}
+
+#log-out {
+  background: #353b48;
+  padding: 9px;
+  color: whitesmoke;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Slabo 27px', serif;
+  z-index: 1000;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+#log-out:hover {
+  background: #1d2129;
+}
+
+#animal-banner {
+ height:auto;
+}
+
+#red-line {
+  height: 10px;
+  background: #c53d44;
+  -webkit-filter: drop-shadow(2px 2px 2px #222);
+  filter: drop-shadow(2px 2px 2px #222);
+}
+
+#animal-header {
+  font-family: 'Slabo 27px', serif;
+  font-size: 1.2em;
+  margin: 18px;
+}
+
+#favorite-header {
+  font-family: 'Slabo 27px', serif;
+  font-weight: 500;
+  color:whitesmoke;
+  margin: 7px;
+}
+
+.row.content {
+  height: 1000px;
+}
+
+.sidenav {
+  padding-top: 20px;
+  background-image: linear-gradient(#7a6e6e, #a59a9a);
+  height: 100%;
+}
+
+#animal-results {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: .95em;
+  line-height: 1.6;
+  margin-left: 35px;
+}
+
+footer {
+  background-color: #c53d44;
+  color: white;
+  padding: 15px;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;} 
 }

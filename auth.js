@@ -9,7 +9,7 @@ let oidc = new ExpressOIDC({
   redirect_uri: 'http://localhost:3000/authorization-code/callback',
   scope: 'openid profile',
   routes: {
-    callback: { defaultRedirect: '/animal' }
+    callback: { defaultRedirect: '/homepage' }
   }
 
 })

@@ -1,5 +1,5 @@
-module.exports = function(sequelize, DataTypes) {
-  var Animal = sequelize.define("Animal", {
+module.exports = function (sequelize, DataTypes) {
+  var Animal = sequelize.define('Animal', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     favorited: {
       type: DataTypes.BOOLEAN,
       allowNull: true
-    }, 
+    },
     animal_name_common: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -50,6 +50,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true
     }
-  });
-  return Animal;
-};
+  }, {
+    timestamps: false
+  })
+  return Animal
+}

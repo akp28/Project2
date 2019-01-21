@@ -1,100 +1,132 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $infoDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
-var $formInput = $('#search-input');
+$(document).ready(function () {
+  // Getting a reference to the input field where user adds a new Animal
+  var $newItemInput = $('input.new-item')
+  // Our new animals will go inside the AnimalContainer
+  var $AnimalContainer = $('.Animal-container')
+  // Adding event listeners for deleting, editing, and adding animals
+  $(document).on('click', 'button.delete', deleteAnimal)
+  $(document).on('click', 'button.complete', toggleComplete)
+  $(document).on('click', '.Animal-item', editAnimal)
+  $(document).on('keyup', '.Animal-item', finishEdit)
+  $(document).on('blur', '.Animal-item', cancelEdit)
+  $(document).on('submit', '#Animal-form', insertAnimal)
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
+  // Our initial animals array
+  var animals = []
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+  // Getting animals from database when page loads
+  getAnimals()
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
-
-  var animal = {
-    text: $formInput.val().trim(),
-    //description: $exampleDescription.val().trim()
-  };
-
-  if (!(animal.text)) {
-    alert("You must enter an example text and description!");
-    return;
+  // This function resets the animals displayed with new animals from the database
+  function initializeRows () {
+    $AnimalContainer.empty()
+    var rowsToAdd = []
+    for (var i = 0; i < animals.length; i++) {
+      rowsToAdd.push(createNewRow(animals[i]))
+    }
+    $AnimalContainer.prepend(rowsToAdd)
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
+  // This function grabs animals from the database and updates the view
+  function getAnimals () {
+    $.get('/api/animals', function (data) {
+      animals = data
+      initializeRows()
+    })
+  }
 
-  $exampleText.val("");
-  //$exampleDescription.val("");
-};
+  // This function deletes a Animal when the user clicks the delete button
+  function deleteAnimal (event) {
+    event.stopPropagation()
+    var id = $(this).data('id')
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/animals/' + id
+    }).then(getAnimals)
+  }
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+  // This function handles showing the input box for a user to edit a Animal
+  function editAnimal () {
+    var currentAnimal = $(this).data('Animal')
+    $(this).children().hide()
+    $(this).children('input.edit').val(currentAnimal.text)
+    $(this).children('input.edit').show()
+    $(this).children('input.edit').focus()
+  }
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
+  // Toggles complete status
+  function toggleComplete (event) {
+    event.stopPropagation()
+    var Animal = $(this).parent().data('Animal')
+    Animal.complete = !Animal.complete
+    updateAnimal(Animal)
+  }
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+  // This function starts updating a Animal in the database if a user hits the "Enter Key"
+  // While in edit mode
+  function finishEdit (event) {
+    var updatedAnimal = $(this).data('Animal')
+    if (event.which === 13) {
+      updatedAnimal.text = $(this).children('input').val().trim()
+      $(this).blur()
+      updateAnimal(updatedAnimal)
+    }
+  }
+
+  // This function updates a Animal in our database
+  function updateAnimal (Animal) {
+    $.ajax({
+      method: 'PUT',
+      url: '/api/animals',
+      data: Animal
+    }).then(getAnimals)
+  }
+
+  // This function is called whenever a Animal item is in edit mode and loses focus
+  // This cancels any edits being made
+  function cancelEdit () {
+    var currentAnimal = $(this).data('Animal')
+    if (currentAnimal) {
+      $(this).children().hide()
+      $(this).children('input.edit').val(currentAnimal.text)
+      $(this).children('span').show()
+      $(this).children('button').show()
+    }
+  }
+
+  // This function constructs a Animal-item row
+  function createNewRow (Animal) {
+    var $newInputRow = $(
+      [
+        "<li class='list-group-item Animal-item'>",
+        '<span>',
+        Animal.animal_name_common,
+        '</span>',
+        "<input type='text' class='edit' style='display: none;'>",
+        // "<button class='delete btn btn-danger'>x</button>",
+        // "<button class='complete btn btn-primary'>✓</button>",
+        '</li>'
+      ].join('')
+    )
+
+    $newInputRow.find('button.delete').data('id', Animal.id)
+    $newInputRow.find('input.edit').css('display', 'none')
+    $newInputRow.data('Animal', Animal)
+    if (Animal.complete) {
+      $newInputRow.find('span').css('text-decoration', 'line-through')
+    }
+    return $newInputRow
+  }
+
+  // This function inserts a new Animal into our database and then updates the view
+  function insertAnimal (event) {
+    event.preventDefault()
+    var Animal = {
+      text: $newItemInput.val().trim(),
+      complete: false
+    }
+
+    $.post('/api/animals', Animal, getAnimals)
+    $newItemInput.val('')
+  }
+})

@@ -9,12 +9,7 @@
    <h1 class="navbar-brand">Project Condor</h1>
 
   <div class="collapse navbar-collapse" id="nav-content">   
-    {{!-- <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 1</a>
-        </li>
-      </li>
-    </ul> --}}
+
 
   <!-- Search -->
     <center id="top-bar">
@@ -25,7 +20,9 @@
         </div>
       </form>
     </center>
-    <strong><h1 id="user-font">Welcome, {{user.userinfo.given_name }}</h1></strong>
+    {{!-- <strong><h1 id="user-font">Welcome, {{user.user_name }}</h1></strong> --}}
+    <strong><h1 id="user-font">Welcome, {{userCon.userinfo.given_name }}</h1></strong>
+    {{!-- userinfo.given_name --}}
     <a href="/logout" id="log-out"> Logout</a>
   </nav>
       
@@ -37,13 +34,18 @@
       <div class="row content">
         <div class="col-md-2 sidenav">
           <div>
-            <p id="favorite-header">{{user.userinfo.given_name }}'s Favorite Animals</p>
+            {{!-- <p id="favorite-header">{{user.user_name }}'s Favorite Animals</p> --}}
+            <p id="favorite-header">{{userCon.userinfo.preferred_username }}'s Favorite Animals</p>
+            
+            <p id="favorite-animal">{{user.favorite_animals}}</p>
             <hr>
           </div>
         </div>
       </div>
     </div>
 </div> 
+{{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/user.js"></script> --}}
 
 <footer class="container-fluid text-center">
   <p>Project Condor © 2019</p>

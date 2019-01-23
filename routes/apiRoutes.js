@@ -30,12 +30,8 @@ module.exports = function (app) {
     }).then(function (result){
       var user = result[0],
       created = result[1];
-      // console.log("user created" + user);
-      // console.log("bool" +created);
+    
       if(created){
-        // console.log('Created user');
-        // res.json(user)
-        // res.json(user)
         res.redirect('/homepage')
       }else {
         console.log('user already exists');
@@ -68,14 +64,3 @@ module.exports = function (app) {
   })
   
 }
-
-// commented out for now to prevent tons of unneeded calls -bb
-
-// axios.get('http://apiv3.iucnredlist.org/api/v3/speciescount?token=' + process.env.IUCN_REDLIST_KEY).then(
-//   function(response) {
-//     console.log(response.data);
-//   }
-// )
-// .catch( function(err){
-//   console.log(err)
-// })

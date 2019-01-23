@@ -1,46 +1,15 @@
 var db = require('../models')
 const auth = require('../auth')
 
-// var jsdom = require("jsdom");
-// const { JSDOM } = jsdom;
-// const { window } = new JSDOM();
-// const { document } = (new JSDOM('')).window;
-// global.document = document;
-
-// var $ = jQuery = require('jquery')(window);
-// // var $ = require('jquery')
-// require("jsdom").env("", function(err, window) {
-//   if (err) {
-//       console.error(err);
-//       return;
-//   }
-
-//   var $ = require("jquery")(window);
-// });
-// const helpers = require("../helpers");
-
 module.exports = function (app) {
-  // Load index page
-  // app.get("/", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.render("index", {
-  //       msg: "Welcome!",
-  //       examples: dbExamples
-  //     });
-  //   });
-  // });
   app.get('/', (req, res) => {
     if (req.userContext) {
-      // res.send(`Hello ${req.userContext.userinfo.name}! <a href="logout">Logout</a>`);
       db.User.findOne({ where: {user_name: req.userContext.userinfo.preferred_username} }).then(function (dbAnimal) {
-        // console.log('getResult :' + JSON.stringify(dbAnimal))
-        // res.json(dbAnimal);
       const user = { userCon: req.userContext, userPref: dbAnimal};
       res.render('homepage', user)
       })
     } else {
       // res.send('Please <a href="/login">login</a>');
-      // res.redirect('index')
       res.render('index')
     }
   })
@@ -54,8 +23,6 @@ module.exports = function (app) {
     }).then(function (result){
       // var user = result[0];
       var created = result[1];
-      // console.log("user created" + user);
-      // console.log("bool" +created);
       const user = { userCon: req.userContext, userPref: result[0]};
       if(created){  
         res.render('homepage', user)
@@ -69,12 +36,10 @@ module.exports = function (app) {
 
   app.get('/animal', auth.oidc.ensureAuthenticated(), (req, res) => {
     db.Animal.findAll({ limit: 10 }).then(function (dbAnimal) {
-      // console.log("animal db" + JSON.stringify(dbAnimal));
       res.render('animal', {
         animal: dbAnimal
       })
     })
-    // res.render('animal', { user: req.userContext })
   })
 
   app.get("/animalsearch/:animalInput",auth.oidc.ensureAuthenticated(), function(req, res) {

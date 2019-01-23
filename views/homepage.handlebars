@@ -18,15 +18,9 @@
 
   <!-- Search -->
     <center id="top-bar">
-      {{!-- <form role="search" method="post" id="searchform" class="searchform" action="/animal">
-        <div class="searchbar">
-          <input class="search_input" type="text" name="" placeholder="Search for Animals...">
-          <a href="/animal" class="search_icon"><i class="fas fa-search"></i></a>
-        </div>
-      </form> --}}
       <form id="myForm" >
         <input id="textInput" type="text"></input>
-        <input type="submit"></input>
+        <input id="submit-btn" type="submit"></input>
       </form>
     </center>
     <script src="js/animal.js" type="text/javascript"></script>
@@ -49,9 +43,23 @@
         </div>
         <div class="col-sm-8 text-left"> 
             <div id="wings">
-                <h1 id="animal-header">Animal Search Results</h1>
-                <p id="page-text"></p>
+                <h1 id="homepage-header">Welcome to Project Condor!</h1>
+                <p id="page-text">Our growing home for those animals who are losing theirs</p>
                 <hr>
+                <div id="list">
+                  <div class="top-picks">
+                    <img src="/assets/redpanda.jpg" alt="">
+                    <p></p>
+                  </div>
+                  <div class="top-picks">
+                    <img src="/assets/snowleopard.jpg" alt="">
+                    <p></p>
+                  </div>
+                  <div class="top-picks">
+                    <img src="/assets/polar bear.jpg" alt="">
+                    <p></p>
+                  </div>
+                </div>
                 <ul id="animal-results">
                   {{#each animal}}
                   <li id="common">Name: {{animal_name_common}}</li>
@@ -70,6 +78,7 @@
       </div>
     </div>
 </div> 
+
 
 <footer class="container-fluid text-center">
   <p>Project Condor © 2019</p>

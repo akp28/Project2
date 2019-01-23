@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "pass1234",
+    "password": "blessedmachine",
     "database": "user_db",
     "host": "localhost",
     "dialect": "mysql"

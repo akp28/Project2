@@ -7,11 +7,12 @@ $(document).ready(function() {
     //     burger_id: $(this).children(".burger_id").val(),
     //     customer: $(this).children(".custom-input").val()
     //   };
-  
-      $.ajax({
-        method: "GET",
-        url: "/animalsearch/" + animalInput,
-      }).then(function(data) {
+      $("#textInput").val('');
+      
+      // $.ajax({
+      //   method: "GET",
+      //   url: "/animalsearch/" + animalInput,
+      // }).then(function(data) {
 
         console.log("animal js" + animalInput);
         // reload page to display devoured burger in proper column
@@ -20,7 +21,9 @@ $(document).ready(function() {
         // window.location.href = 'homepage';
         // return false
         // "/cms?post_id=" + currentPost.id;
-      });
-  
+        // animalInput= $("#textInput").val('');
+      // });
+      // animalInput= $("#textInput").val('');
+        // return false
     });
   });

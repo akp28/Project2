@@ -18,14 +18,19 @@
 
   <!-- Search -->
     <center id="top-bar">
-      <form role="search" method="get" id="searchform" class="searchform" action="/">
+      {{!-- <form role="search" method="post" id="searchform" class="searchform" action="/animal">
         <div class="searchbar">
           <input class="search_input" type="text" name="" placeholder="Search for Animals...">
-          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+          <a href="/animal" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
+      </form> --}}
+      <form id="myForm">
+        <input id="textInput" type="text"></input>
+        <input type="submit"></input>
       </form>
     </center>
-    <strong><h1 id="user-font">Welcome, {{user.userinfo.given_name }}</h1></strong>
+    <script src="js/animal.js" type="text/javascript"></script>
+    <strong><h1 id="user-font">Welcome, {{userCon.userinfo.given_name }}</h1></strong>
     <a href="/logout" id="log-out"> Logout</a>
   </nav>
       
@@ -37,23 +42,27 @@
       <div class="row content">
         <div class="col-md-2 sidenav">
           <div>
-            <p id="favorite-header">{{user.userinfo.given_name }}'s Favorite Animals</p>
+            <p id="favorite-header">{{userCon.userinfo.preferred_username }}'s Animal Search Results</p>
             <hr>
           </div>
         </div>
         <div class="col-sm-8 text-left"> 
             <div id="wings">
-                <h1 id="animal-header">Animal Search Results</h1>
+                {{!-- <h1 id="animal-header">Animal Search Results</h1> --}}
                 <p id="page-text"></p>
                 <hr>
                 <ul id="animal-results">
-                  <li id="common">Name: {{animal.animal_name_common}}</li>
-                  <li id="scientific">Scientific Name: {{animal.animal_name_scientific}}</li>
-                  <li id="threat-level">Threat Level: {{animal.threat}}</li>
-                  <li id="population">Population: {{animal.pop}}</li>
-                  <li id="max-weight">Max Weight: {{animal.max_weight}}</li>
-                  <li id="habitat">Habitat: {{animal.habitat}}</li>
-                  <li id="info">{{animal.info}}</li>
+                  {{#each animal}}
+                  <li id="common">Name: {{animal_name_common}}</li>
+                  <li id="scientific">Scientific Name: {{animal_name_scientific}}</li>
+                  <li id="threat-level">Threat Level: {{threat}}</li>
+                  <li id="population">Population: {{pop}}</li>
+                  <li id="max-weight">Max Weight: {{max_weight}}</li>
+                  <li id="habitat">Habitat: {{habitat}}</li>
+                  <li id="info">{{info}}</li>
+                  <br>
+                  <hr>
+                  {{/each}}
                 </ul>
             </div>
         </div>

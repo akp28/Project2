@@ -6,10 +6,10 @@ let oidc = new ExpressOIDC({
   issuer: process.env.OKTA_ORG_URL + '/oauth2/default',
   client_id: process.env.OKTA_CLIENT_ID,
   client_secret: process.env.OKTA_CLIENT_SECRET,
-  redirect_uri: 'https://evening-beach-39870.herokuapp.com/authorization-code/callback',
+  redirect_uri: process.env.OKTA_CALLBACK || 'http://localhost:3000/authorization-code/callback',
   scope: 'openid profile',
   routes: {
-    callback: { defaultRedirect: '/homepage' }
+    callback: { defaultRedirect: '/api/addUser' }
   }
 
 })

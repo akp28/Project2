@@ -206,7 +206,9 @@ ul {
 }
 
 #animal-banner {
- height:auto;
+  width: 99vw;
+  height: auto;
+  object-fit: cover;
 }
 
 #red-line {
@@ -237,25 +239,23 @@ ul {
   margin: 7px;
 }
 
-.row.content {
-}
-
 #page-text {
   font-family: 'Slabo 27px', serif;
   font-size: 1.3em;
 }
 
+#list{
+  display: flex;
+}
+
 .top-picks {
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: center;
 }
 
 .sidenav {
   padding-top: 20px;
-  background-image: linear-gradient(#7a6e6e, #a59a9a);
-  height: 100%;
+  background-image: linear-gradient(#443939, #e6dada);
+  min-height: 400px;
 }
 
 #animal-results {

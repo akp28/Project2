@@ -1,5 +1,6 @@
 body{
   background:rgb(230, 218, 218);
+  min-height: 100%
 }
 
 #home {
@@ -15,6 +16,10 @@ body{
 
 h1 {
   font-family: 'PT Serif', serif;
+}
+
+ul {
+  list-style-type: none;
 }
 
 #front-font {
@@ -175,7 +180,7 @@ h1 {
   text-shadow: 2px 2px #31312f;
 }
 
-#log-out {
+#log-out, #submit-btn {
   background: #353b48;
   padding: 9px;
   color: whitesmoke;
@@ -189,7 +194,14 @@ h1 {
   margin-left: 20px;
 }
 
-#log-out:hover {
+#textInput {
+  padding:8px 15px;
+  background:rgba(10, 10, 10, 0.2);
+  border:0px solid #dbdbdb;
+  border-radius: 10px;
+}
+
+#log-out:hover, #submit-btn:hover {
   background: #1d2129;
 }
 
@@ -204,10 +216,18 @@ h1 {
   filter: drop-shadow(2px 2px 2px #222);
 }
 
+#homepage-header {
+  text-align: center;
+}
+
 #animal-header {
   font-family: 'Slabo 27px', serif;
   font-size: 1.2em;
   margin: 18px;
+}
+
+#page-text{
+  text-align: center;
 }
 
 #favorite-header {
@@ -218,7 +238,18 @@ h1 {
 }
 
 .row.content {
-  height: 1000px;
+}
+
+#page-text {
+  font-family: 'Slabo 27px', serif;
+  font-size: 1.3em;
+}
+
+.top-picks {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .sidenav {
@@ -234,13 +265,19 @@ h1 {
   margin-left: 35px;
 }
 
+#common {
+  font-size: 1.4em;
+}
+
+
 footer {
   background-color: #c53d44;
   color: white;
-  padding: 15px;
-  bottom:0;
-  left:0;
-  right:0;
+  padding: 6px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 @media screen and (max-width: 767px) {

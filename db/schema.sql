@@ -18,7 +18,7 @@ CREATE TABLE animals
     PRIMARY KEY (id)
 );
 
-CREATE TABLE user
+CREATE TABLE users
 (
 	id int NOT NULL AUTO_INCREMENT,
 	user_name VARCHAR(255) NOT NULL,

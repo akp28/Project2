@@ -35,11 +35,13 @@ module.exports = function (app) {
       if(created){
         // console.log('Created user');
         // res.json(user)
-        res.render('homepage',{user})
+        // res.json(user)
+        res.redirect('/homepage')
       }else {
-        // console.log('user already exists');
-        res.render('homepage',{user})
-        // res.redirect('/api/userInfo')
+        console.log('user already exists');
+        // res.render('homepage',{user})
+        res.redirect('/homepage')
+        // res.json(user)
       }
     })
   })
@@ -64,6 +66,7 @@ module.exports = function (app) {
       res.json(dbAnimal)
     })
   })
+  
 }
 
 // commented out for now to prevent tons of unneeded calls -bb

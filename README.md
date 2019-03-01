@@ -1,6 +1,6 @@
 # Project Condor
 
-## LINK: [](https://evening-beach-39870.herokuapp.com "Poject Condor on Heroku")
+## LINK: https://evening-beach-39870.herokuapp.com
 
 ![banner](https://raw.githubusercontent.com/akp28/Project2/master/public/assets/animalbanner.png)
 
